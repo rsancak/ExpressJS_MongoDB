@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<%= pageDescription %>">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="px-3 py-2 bg-dark text-white">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+            <i class="fa-solid fa-users-viewfinder fa-2xl"></i>
+          </a>
+
+          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+            <li>
+              <a href="/" class="nav-link btn-width text-white text-center <%= pageName === 'index' && 'active-link' %>">
+                <i class="fa-solid fa-user-group fa-lg"></i><br>
+                List
+              </a>
+            </li>
+            <li>
+              <a href="/add" class="nav-link btn-width text-white text-center <%= pageName === 'add' && 'active-link' %>">
+                <i class="fa-solid fa-user-plus fa-lg"></i><br>
+                Add
+              </a>
+            </li>
+            <li>
+              <a href="/remove" class="nav-link btn-width text-white text-center <%= pageName === 'remove' && 'active-link' %>">
+                <i class="fa-solid fa-user-minus fa-lg"></i><br>
+                Remove
+              </a>
+            </li>
+            <li>
+              <a href="/update" class="nav-link btn-width text-white text-center <%= pageName === 'update' && 'active-link' %>">
+                <i class="fa-solid fa-user-gear fa-lg"></i><br>
+                Update
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>

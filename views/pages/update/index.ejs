@@ -1,0 +1,97 @@
+<% let dir=process.cwd() %>
+    <%- include(dir + "/views/partials/header/index" , locals) %>
+
+        <div class="container">
+            <div class="row content justify-content-center">
+
+                <% if(allData.length> 0) { %>
+                    <div class="col-sm-6">
+                        <form action="" class="mt-3" id="addUserForm">
+                            <div class="row align-items-center">
+                                <div class="col-8">
+                                    <input type="text" class="form-control mb-2" id="nameSearch" placeholder="Name">
+                                </div>
+                                <div class="col-4">
+                                    <button type="submit" class="btn btn-primary mb-2 form-control"
+                                        id="find">Find</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-12">
+                        <table class="table mt-3" id="tableUsers">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Picture</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Surname</th>
+                                    <th scope="col">Job</th>
+                                    <th scope="col" class="text-end">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for ( let i in allData ) { %>
+                                    <tr class="align-middle" data-id="<%= allData[i]._id %>"
+                                        data-name="<%= allData[i].name %>">
+                                        <td>
+                                            <div class="user-image">
+                                                <img src="/img/users/<%= allData[i].photo %>">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <%= allData[i].name %>
+                                        </td>
+                                        <td>
+                                            <%= allData[i].surname %>
+                                        </td>
+                                        <td>
+                                            <%= allData[i].job %>
+                                        </td>
+                                        <td class="text-end"><a href="javascript:;" data-id="<%= allData[i]._id %>"
+                                                class="btn btn-success btn-update"><i class="fa-solid fa-gears"></i></a>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="update-content">
+                        <div class="btn-close"></div>
+                        <form id="addForm" class="mt-3 validation-form" data-form-type="update">
+                            <div class="form-row align-items-center">
+                                <div class="col-auto mb-3">
+                                    <label for="photo" class="form-label">Photo</label>
+                                    <input class="form-control mb-2" type="file" onchange="this.blur();" accept="image/jpg,image/png,image/jpeg" id="photo" name="photo" autocomplete="off" required>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control mb-2" id="name" placeholder="Name" name="name" autocomplete="off" required>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <label for="surname" class="form-label">Surname</label>
+                                    <input type="text" class="form-control mb-2" id="surname" placeholder="Surname" name="surname" autocomplete="off" required>
+                                </div>
+                                <div class="col-auto mb-3">
+                                    <label for="job" class="form-label">Job</label>
+                                    <input type="text" class="form-control mb-2" id="job" placeholder="Job" name="job" autocomplete="off" required>
+                                </div>
+                                <input type="hidden" class="form-control mb-2" id="id" name="id">
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary mb-2">Update</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <% } else { %>
+                        <div class="col-sm-12">
+                            <div class="alert alert-warning mt-4">User not found! <a href="/add" class="btn btn-primary btn-sm">Add User</a></div>
+                        </div>
+                        <% }%>
+                        <div class="col-sm-12 not-found-message" style="display: none;">
+                            <div class="alert alert-warning mt-4"><span class="textQuery"></span> User not found! <a href="/add" class="btn btn-primary btn-sm">Add User</a></div>
+                        </div>
+
+            </div>
+        </div>
+
+        <%- include(dir + "/views/partials/footer/index" ) %>

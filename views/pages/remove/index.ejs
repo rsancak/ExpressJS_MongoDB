@@ -1,0 +1,66 @@
+<% let dir=process.cwd() %>
+    <%- include(dir + "/views/partials/header/index" , locals) %>
+
+        <div class="container">
+            <div class="row content justify-content-center">
+
+                <% if(allData.length> 0) { %>
+                    <div class="col-sm-6 not-found-user">
+                        <div class="row mt-3 align-items-center">
+                            <div class="col-8">
+                                <input type="text" class="form-control mb-2" id="nameSearch" placeholder="Name">
+                            </div>
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-primary mb-2 form-control" id="find">Find</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 not-found-user">
+                        <table class="table mt-3" id="tableUsers">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Picture</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Surname</th>
+                                    <th scope="col">Job</th>
+                                    <th scope="col" class="text-end">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for ( let i in allData ) { %>
+                                    <tr class="align-middle" data-id="<%= allData[i]._id %>"
+                                        data-name="<%= allData[i].name %>">
+                                        <td>
+                                            <div class="user-image">
+                                                <img src="/img/users/<%= allData[i].photo %>">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <%= allData[i].name %>
+                                        </td>
+                                        <td>
+                                            <%= allData[i].surname %>
+                                        </td>
+                                        <td>
+                                            <%= allData[i].job %>
+                                        </td>
+                                        <td class="text-end"><a href="javascript:;" data-id="<%= allData[i]._id %>"
+                                                class="btn btn-danger btn-remove"><i class="fa-solid fa-xmark"></i></a>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <% } else { %>
+                        <div class="col-sm-12">
+                            <div class="alert alert-warning mt-4">User not found! <a href="/add" class="btn btn-primary btn-sm">Add User</a></div>
+                        </div>
+                    <% }%>
+                    <div class="col-sm-12 not-found-message" style="display: none;">
+                        <div class="alert alert-warning mt-4"><span class="textQuery"></span> User not found! <a href="/add" class="btn btn-primary btn-sm">Add User</a></div>
+                    </div>
+            </div>
+        </div>
+
+        <%- include(dir + "/views/partials/footer/index" ) %>

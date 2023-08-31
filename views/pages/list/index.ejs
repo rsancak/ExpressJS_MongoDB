@@ -1,0 +1,45 @@
+<% var dir=process.cwd() %>
+  <%- include(dir + "/views/partials/header/index" , {pageDescription: "Index Page" , pageTitle: "Index Page" }) %>
+
+    <div class="container">
+      <div class="row content">
+        <div class="col-sm-12">
+          <% if(allData.length > 0) { %>
+            <table class="table mt-3">
+              <thead>
+                <tr>
+                  <th scope="col">Picture</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Surname</th>
+                  <th scope="col" class="text-end">Job</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for ( let i in allData ) { %>
+                  <tr class="align-middle">
+                    <td>
+                      <div class="user-image">
+                        <img src="/img/users/<%= allData[i].photo %>">
+                      </div>
+                    </td>
+                    <td>
+                      <%= allData[i].name %>
+                    </td>
+                    <td>
+                      <%= allData[i].surname %>
+                    </td>
+                    <td class="text-end">
+                      <%= allData[i].job %>
+                    </td>
+                  </tr>
+                  <% } %>
+              </tbody>
+            </table>
+            <% } else { %>
+              <div class="alert alert-warning mt-4">User not found! <a href="/add" class="btn btn-primary btn-sm">Add User</a></div>
+            <% }%>
+        </div>
+      </div>
+    </div>
+
+    <%- include(dir + "/views/partials/footer/index" ) %>
