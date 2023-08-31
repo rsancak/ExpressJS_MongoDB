@@ -1,6 +1,6 @@
 ## INTERVIEW
 
-<video src='public/video/interview.mp4' width='100%'/>
+https://github.com/rsancak/ExpressJS_MongoDB_Project/assets/95458071/a1836039-194f-41c0-94a5-bc01f68e7eb4
 
 ## Use
 
