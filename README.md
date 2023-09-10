@@ -21,4 +21,3 @@ https://github.com/rsancak/ExpressJS_MongoDB_Project/assets/95458071/a1836039-19
   nodemon app.js
 ```
 
-Good Job! :)
